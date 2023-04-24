@@ -1,0 +1,17 @@
+<div class="form-field" [ngClass]="wrapperStyling">
+  <label class="form-field__text" [class.required]="required">
+    {{ label }}
+  </label>
+  <div
+    #contentRef
+    class="form-field__content"
+    [ngClass]="{
+      focus: active,
+      disabled: disabled,
+      readonly: readonly,
+      error: status === 'invalid'
+    }"
+    (click)="onContentClick()">
+    <ng-content></ng-content>
+  </div>
+</div>

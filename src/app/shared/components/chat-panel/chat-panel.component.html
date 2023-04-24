@@ -1,0 +1,7 @@
+<div *ngIf="messages" class="chat__messenger_panel" #container>
+  <ng-container *ngFor="let item of messages; let i = index">
+    <app-chat-message
+      [message]="item"
+      [showBlinkCursor]="connection === 'generation' && i === messages.length - 1"></app-chat-message>
+  </ng-container>
+</div>

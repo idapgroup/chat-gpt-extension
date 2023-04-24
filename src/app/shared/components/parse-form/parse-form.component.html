@@ -1,0 +1,17 @@
+<h3 class="form_description">Paste url and click submit for start chat</h3>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <app-form-input formControlName="url" placeholder="Enter url" class="form_textarea" />
+  <!--  or-->
+  <!--  <app-file-input formControlName="file" acceptedTypes=".pdf" [maxFileSize]="100"></app-file-input>-->
+  <button
+    (click)="onSubmit()"
+    type="submit"
+    [disabled]="(form.invalid && form.touched) || loading"
+    class="button"
+    [class.loading]="loading">
+    Submit
+    <ng-container *ngIf="loading">
+      <app-loader [radius]="5" color="#222222" />
+    </ng-container>
+  </button>
+</form>

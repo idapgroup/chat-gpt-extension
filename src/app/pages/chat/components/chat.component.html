@@ -1,0 +1,5 @@
+<section class="chat__messenger">
+  <h1 class="chat__messenger_title">{{ title }}</h1>
+  <app-chat-panel [messages]="messages$ | async" [connection]="connection$ | async" />
+  <app-chat-form [connection]="connection$ | async" (send)="onSubmit($event)" (stopGeneration)="onStopGeneration()" />
+</section>

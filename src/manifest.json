@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "ChatGPT-Extension",
+  "description": "Extension for parse information and chat with GPT",
+  "version": "0.0.1",
+  "icons": {
+    "48": "assets/icons/icon-48x48.png",
+    "96": "assets/icons/icon-96x96.png"
+  },
+  "browser_action": {
+    "default_icon": "assets/icons/icon-32x32.png",
+    "default_title": "IdapGPT",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["main.js", "polyfills.js", "runtime.js", "scripts.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "idapgroup@chat-gtp"
+    }
+  }
+}

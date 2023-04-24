@@ -1,0 +1,39 @@
+@import "variablies";
+@mixin button () {
+  width: 10rem;
+  max-height: 3rem;
+  height: auto;
+  border: 0.2rem solid $yellow;
+  border-radius: 0.5rem;
+  background-color: $white;
+  transition: 0.3s;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2rem;
+  color: $dark;
+}
+@mixin textareaScroll () {
+  width: 2px;
+  &-track {
+    background-color: $lightDark;
+  }
+  &-thumb {
+    border-radius: 20px;
+    border: 3px solid $yellow;
+  }
+}
+@mixin customScroll () {
+  width: 0.2rem;
+  &-track {
+    background-color: $bgColor;
+  }
+  &-thumb {
+    border-radius: 2rem;
+    border: 0.3rem solid $lightDark;
+  }
+}
+@mixin boxShadow () {
+  box-shadow: 0rem 0.1rem 0.7rem 0rem $gray;
+}

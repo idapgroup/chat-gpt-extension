@@ -1,0 +1,17 @@
+<div class="chat__history-wrapper">
+  <h1 class="chat__history-content_title">Chat history:</h1>
+  <div *ngIf="history?.length; else noHistory" class="chat__history-content_history-list">
+    <a *ngFor="let item of history" [routerLink]="['/chat', item.id]" class="chat__history-content_history-link">
+      {{ item.title }}
+    </a>
+  </div>
+
+  <ng-template #noHistory>
+    <div class="chat__history-content_no-history">
+      <div class="chat__history-content_no-history-icon-container">
+        <img src="assets/icons/history.svg" alt="history icon" class="chat__history-content_no-history-icon" />
+      </div>
+      <span class="chat__history-content_no-history-text">No history yet...</span>
+    </div>
+  </ng-template>
+</div>

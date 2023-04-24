@@ -1,0 +1,24 @@
+<app-form-control-wrapper
+  [label]="label"
+  [required]="required"
+  [status]="status"
+  [active]="active"
+  [disabled]="disabled"
+  (contentClick)="onContentClick()">
+  <input
+    #formInput
+    class="form_textarea-field"
+    [type]="type === 'number' ? 'text' : type"
+    [attr.inputmode]="inputMode"
+    [id]="id"
+    [value]="value || ''"
+    [placeholder]="placeholder || label || ''"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [autocomplete]="autocomplete"
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    (input)="onChangeValue($event)"
+    (status)="onChangeStatus($event)"
+    appControlErrors />
+</app-form-control-wrapper>

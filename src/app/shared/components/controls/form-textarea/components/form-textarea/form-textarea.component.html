@@ -1,0 +1,27 @@
+<app-form-control-wrapper
+  [label]="label"
+  [disabled]="disabled"
+  [readonly]="readonly"
+  [status]="status"
+  [required]="required"
+  (contentClick)="onContentClick()">
+  <textarea
+    #textArea
+    tabindex="0"
+    autocomplete="off"
+    class="form_textarea-field"
+    [id]="id"
+    [value]="value !== null && value !== undefined ? value : ''"
+    cdkTextareaAutosize
+    [cdkAutosizeMinRows]="minRows"
+    [cdkAutosizeMaxRows]="maxRows"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    [disabled]="disabled"
+    (blur)="onTouched()"
+    (input)="onChangeValue($event)"
+    (keydown)="handleKeyDown($event)"
+    (status)="onChangeStatus($event)"
+    appControlErrors>
+  </textarea>
+</app-form-control-wrapper>

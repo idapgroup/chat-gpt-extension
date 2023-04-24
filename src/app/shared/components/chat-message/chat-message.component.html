@@ -1,0 +1,11 @@
+<ng-container *ngIf="message">
+  <div [ngClass]="isUserMessage ? 'user' : 'robot'" class="chat__messenger_panel-message-container">
+    <img
+      [src]="isUserMessage ? '/assets/icons/human-icon.svg' : '/assets/icons/robot-icon.svg'"
+      alt="icon"
+      class="message-icon" />
+    <div class="message-text">
+      <markdown clipboard [data]="message.content" [class.blink]="showBlinkCursor" />
+    </div>
+  </div>
+</ng-container>

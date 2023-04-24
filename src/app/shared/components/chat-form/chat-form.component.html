@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+  <app-form-textarea
+    formControlName="message"
+    placeholder="Enter message..."
+    [minRows]="1"
+    [maxRows]="3"
+    (submitted)="onSubmit()"
+    class="form_textarea" />
+  <ng-container *ngIf="connection === 'generation'; else submitTpl">
+    <button (click)="onStopGeneration()" type="button"> Stop generation</button>
+  </ng-container>
+  <ng-template #submitTpl>
+    <button type="submit" [disabled]="connection === 'loading'" class="button">
+      <img src="/assets/icons/send-icon.svg" class="send-icon" alt="send-icon" />
+      <ng-container *ngIf="connection === 'loading'">
+        <app-loader [radius]="5" color="#222222" class="button-loader-wrap" />
+      </ng-container>
+    </button>
+  </ng-template>
+</form>

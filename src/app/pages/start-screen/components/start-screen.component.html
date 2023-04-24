@@ -1,0 +1,8 @@
+<section class="chat__history-content">
+  <app-chat-history [history]="userHistory$ | async" />
+  <app-parse-form
+    [loading]="loading$ | async"
+    (send)="onParseUrl($event)"
+    [error]="error"
+    class="chat__history-content_form-container" />
+</section>

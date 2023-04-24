@@ -1,0 +1,16 @@
+<app-form-control-wrapper
+  (contentClick)="onClickFormField()"
+  label="Select file"
+  [status]="uploadFileError ? 'invalid' : 'valid'">
+  <input [formControl]="selectFileName" readonly />
+  <label for="fileInput" (click)="$event.stopPropagation()"> Icon </label>
+  <input
+    #fileInput
+    type="file"
+    id="fileInput"
+    [accept]="acceptedTypes"
+    hidden
+    (change)="onFileChange($event)"
+    name="fileInput" />
+  <app-control-error *ngIf="uploadFileError" [error]="uploadFileError" />
+</app-form-control-wrapper>

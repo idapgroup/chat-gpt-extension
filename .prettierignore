@@ -1,0 +1,8 @@
+projects/**/*
+node_modules/**/*
+.angular
+dist
+e2e
+
+# Ignore files
+*.ts

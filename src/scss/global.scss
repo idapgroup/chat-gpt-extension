@@ -1,0 +1,262 @@
+@import "variablies";
+@import "mixins";
+
+html{
+  font-family:'Roboto', sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $bgColor;
+  margin: 0
+}
+
+.page-content {
+  padding: 0 1rem;
+  max-width: 50rem;
+  max-height: 60rem;
+  height: 100%;
+}
+
+.chat{
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    margin:1.5rem 0;
+    &_settings{
+      display: block;
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+  }
+
+  &__messenger{
+    &_title{
+      font-style: normal;
+      font-weight: 600;
+      font-size:2rem;
+      line-height: 1.8rem;
+      color: $dark;
+    }
+    &_panel{
+      max-height: 40rem;
+      overflow-y: auto;
+      &::-webkit-scrollbar{
+        @include customScroll
+      }
+      :not(:last-child){
+        margin-bottom: 2rem;
+      }
+      &-message-container{
+        display: flex;
+        align-items: baseline;
+        padding: 0.5rem 0.2rem;
+        border: 0.2rem solid $lightDark;
+        gap: 0.5rem;
+        margin-right: 0.4rem;
+        border-radius: 1.5rem;
+        background-color: $white;
+      }
+    }
+
+    .user {
+      border: 0.2rem solid $yellow;
+    }
+    .message-icon{
+      border: 0.1rem solid $lightDark;
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+    }
+    .message-text {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
+      color: $lightDark;
+      padding: 0 1rem;
+      .blink > :last-child::after, .blink:empty {
+        content: "";
+        width: 0.6rem;
+        height: 1.8rem;
+        background: #000;
+        display: inline-block;
+        animation: cursor-blink 1.5s steps(2) infinite;
+        @keyframes cursor-blink {
+          0% {
+            opacity: 0;
+          }
+        }
+      }
+      .markdown-clipboard-button{
+        background-color: $yellow;
+        border: 1px solid $lightDark;
+        border-radius: 4px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        color: $lightDark;
+        position: absolute;
+        top: 2px;
+        right: 0;
+        cursor: pointer;
+      }
+      }
+    }
+
+  &__history-content {
+    &_title{
+      font-style: normal;
+      font-weight: 600;
+      font-size:2rem;
+      line-height: 1.8rem;
+      color: $dark;
+    }
+    &_history-list {
+      display: flex;
+      flex-direction: column;
+      margin: 5rem 0;
+      gap: 5px 0;
+    }
+    &_history-link {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.6rem;
+      line-height: 2rem;
+      color: $lightDark;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        opacity: 0.8;
+        text-decoration:underline;
+      }
+    }
+    &_no-history {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 5rem 0;
+      &-text {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        text-align: center;
+        color: $dark;
+      }
+      &-icon {
+        width: 100%;
+        height: auto;
+        &-container {
+          max-width: 50px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    position: relative;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    &_description{
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      color: $lightDark;
+    }
+    &_textarea {
+      max-width: 40rem;
+      width: 100%;
+    }
+    &_textarea-field {
+      width: 100%;
+      border: 2px solid $yellow;
+      border-radius: 0.5rem;
+      resize: none;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.8rem;
+      transition: 0.3s;
+
+      &::placeholder {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.8rem;
+        line-height: 1.2rem;
+        padding: 0.5rem 0;
+        color: $dark;
+      }
+
+      &:hover {
+        @include boxShadow
+      }
+
+      &::-webkit-scrollbar {
+        @include textareaScroll;
+      }
+    }
+    &-field-error{
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+      color: $errorColor;
+    }
+  }
+
+  .error .form_textarea-field{
+    border-color: $errorColor;
+  }
+  .button{
+    @include button ();
+
+    &-loader-wrap{
+      display: flex;
+      justify-content: center;
+    }
+
+    &-loader{
+      border:0.2rem solid $lightDark;
+      opacity: 0.7;
+      -webkit-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite;
+      border-top-color: transparent !important;
+      border-radius: 50%;
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    &:active{
+      border-color:$lightYellow ;
+      background-color: $lightYellow;
+    }
+    &:disabled{
+      background-color:$lightYellow ;
+      .send-icon{
+        display: none;
+      }
+    }
+    &:hover{
+      @include boxShadow
+    }
+  }
+}
+
+
+
+
+
+
+
